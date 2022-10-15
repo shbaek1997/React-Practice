@@ -32,6 +32,7 @@ function Home() {
               el;
             return (
               <Movie
+                key={id}
                 title={title}
                 divId={id}
                 summary={summary}
