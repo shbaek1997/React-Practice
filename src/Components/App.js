@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Movie from "./Movie";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,28 +27,23 @@ function App() {
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
-        <ul>
+        <div>
           {movies.map((el) => {
             const { title, id, summary, rating, genres, medium_cover_image } =
               el;
             return (
-              <div key={id}>
-                <img alt={title} src={medium_cover_image}></img>
-                <h2>{title}</h2>
-                <p>{summary ? summary : "No summary available"}</p>
-                <div>{rating}</div>
-                <ul>
-                  {genres.map((genre) => (
-                    <li key={genre}>{genre}</li>
-                  ))}
-                </ul>
-                <br />
-              </div>
+              <Movie
+                title={title}
+                divId={id}
+                summary={summary}
+                rating={rating}
+                genres={genres}
+                CoverImage={medium_cover_image}
+              ></Movie>
             );
           })}
-        </ul>
+        </div>
       )}
-      ;
     </div>
   );
 }
