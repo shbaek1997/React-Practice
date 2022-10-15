@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Movie from "./Movie";
+import Movie from "../Components/Movie";
 
-function App() {
+function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const fetchData = async () => {
@@ -12,7 +12,6 @@ function App() {
       );
       const { data } = response;
       const { movies } = data.data;
-      console.log(movies);
       setIsLoading(false);
       setMovies(movies);
     } catch (error) {
@@ -48,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
