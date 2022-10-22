@@ -8,7 +8,7 @@ function Home() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year"
+        "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year"
       );
       const { data } = response;
       const { movies } = data.data;
@@ -28,8 +28,16 @@ function Home() {
       ) : (
         <div>
           {movies.map((el) => {
-            const { title, id, summary, rating, genres, medium_cover_image } =
-              el;
+            const {
+              title,
+              id,
+              summary,
+              rating,
+              genres,
+              medium_cover_image,
+              runtime,
+              year,
+            } = el;
             return (
               <Movie
                 key={id}
@@ -39,6 +47,8 @@ function Home() {
                 rating={rating}
                 genres={genres}
                 CoverImage={medium_cover_image}
+                runtime={runtime}
+                year={year}
               ></Movie>
             );
           })}
